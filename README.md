@@ -20,14 +20,14 @@ if ($currentSetting.$regName -eq 1) {
 }
 ```
 
-### 使用方法：
+#### 使用方法：
 
 1. 打开记事本或其他文本编辑器。
 2. 将上面的脚本复制并粘贴到记事本中。
 3. 保存文件为 `.ps1` 格式，例如 `ToggleDarkMode.ps1`。
 4. 右键点击该文件并选择“使用 PowerShell 运行”。
 
-### 注意：
+#### 注意：
 
 - 运行脚本时可能需要有管理员权限。
 - 如果你的系统禁止运行脚本，你可能需要调整执行策略。可以使用命令 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted` 来更改策略。
