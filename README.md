@@ -1,10 +1,49 @@
-# win-ToggleDarkMode
-这个宏点击后可以切换windows 10或者 11 的 亮色和暗色模式，如果不成功请按以下步骤解决
+## Q: 请给我一个简单的方式，可以一键切换win11的亮色和暗色模式
 
+### A: 以下是一个简单的PowerShell脚本示例，它会检查当前的模式并将其切换到另一模式：
+
+```
+powershellCopy code# 定义注册表路径
+$regPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+$regName = "AppsUseLightTheme"
+
+# 读取当前的亮色/暗色模式设置
+$currentSetting = Get-ItemProperty -Path $regPath -Name $regName
+
+# 切换模式
+if ($currentSetting.$regName -eq 1) {
+    # 当前为亮色模式，切换到暗色模式
+    Set-ItemProperty -Path $regPath -Name $regName -Value 0
+} else {
+    # 当前为暗色模式，切换到亮色模式
+    Set-ItemProperty -Path $regPath -Name $regName -Value 1
+}
+```
+
+### 使用方法：
+
+1. 打开记事本或其他文本编辑器。
+2. 将上面的脚本复制并粘贴到记事本中。
+3. 保存文件为 `.ps1` 格式，例如 `ToggleDarkMode.ps1`。
+4. 右键点击该文件并选择“使用 PowerShell 运行”。
+
+### 注意：
+
+- 运行脚本时可能需要有管理员权限。
+- 如果你的系统禁止运行脚本，你可能需要调整执行策略。可以使用命令 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted` 来更改策略。
+- 这个脚本只切换应用的亮色/暗色模式，不会影响系统的亮色/暗色模式。
+
+
+
+## Q: 但是这个只能在命令框里面才能运行成功，我双击打开的是记事本，右键选择win shell运行没有效果
+
+
+
+### A: 您遇到的情况是一个常见问题，原因在于 PowerShell 脚本的默认行为和系统安全策略。下面是一些可能的解决方法：
 
 1. **更改默认程序**:
 
-   - 更改 `.ps1` 文件的默认打开方式。右键点击文件，选择“打开方式”然后选择“选择其他应用”，在列表中找到 PowerShell，并勾选“始终使用此应用打开 .ps1 文件”。它一般位于“C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe”。这样，双击时它会在 PowerShell 中打开而不是记事本。
+   - 更改 `.ps1` 文件的默认打开方式。右键点击文件，选择“打开方式”然后选择“选择其他应用”，在列表中找到 PowerShell，并勾选“始终使用此应用打开 .ps1 文件”。这样，双击时它会在 PowerShell 中打开而不是记事本。
 
 2. **通过 PowerShell 运行**:
 
@@ -50,5 +89,5 @@
      ```
 
    - 这样，您可以双击 `.bat` 文件来运行 PowerShell 脚本。
-  
-**_宏与本Readme文档内容均由GPT生成_**
+
+**_宏与本Readme文档均由GPT生成_**
