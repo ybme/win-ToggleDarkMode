@@ -91,3 +91,7 @@ if ($currentSetting.$regName -eq 1) {
    - 这样，您可以双击 `.bat` 文件来运行 PowerShell 脚本。
 
 **_宏与本Readme文档均由GPT生成_**
+
+# 设置运行效果时需要注意，Windows 颜色模式要为深色或者浅色，不要是自定义，不然运行之后效果不明显：
+<img width="754" alt="image" src="https://github.com/ybme/win-ToggleDarkMode/assets/10464238/5932f910-0653-4d64-978d-4a9a048a5624">
+
